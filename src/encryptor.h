@@ -15,5 +15,5 @@ private:
     void ksa();
     vector<unsigned char> input;
     vector<unsigned char> output;
-    vector<unsigned char> prga();
+    vector<unsigned char> prga(const int& length);
 };

@@ -22,11 +22,11 @@ void encryptor::ksa()
     }
 }
 
-vector<unsigned char> encryptor::prga()
+vector<unsigned char> encryptor::prga(const int& length)
 {
     vector<unsigned char> output;
     int  i = 0, j = 0, temp;
-    for(int x = 0; x < (int) input.size()-1; x++)
+    for(int x = 0; x < length; x++)
     {
         i = (i + 1) % 256;
         j = ( j + state[i]) % 256;
@@ -40,9 +40,12 @@ vector<unsigned char> encryptor::prga()
 
 vector<unsigned char> encryptor::crypt()
 {
+    int length = (int) input.size()-1;
+
+    prga(1024);
     ksa();
-    vector<unsigned char> encStream = prga();
-    for(int i = 0; i < (int) input.size()-1; i++)
+    vector<unsigned char> encStream = prga(length);
+    for(int i = 0; i < length; i++)
     {
         output.push_back(input[i] ^ encStream[i]);
     }

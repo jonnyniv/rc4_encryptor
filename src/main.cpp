@@ -4,8 +4,20 @@
 */
 
 #include "main.h"
+
 int main(int argc, char const *argv[])
 {
+
+    if(argc < 3)
+    {
+        cout << "Usage: encryptor <Input file name> <Output file name>" << endl;
+        return 0;
+    }
+    else if(!fexists(argv[1]))
+    {
+        cout << "Input file does not exist!" << endl;
+        return 0;
+    }
 
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE); 
     DWORD mode = 0;
@@ -13,13 +25,12 @@ int main(int argc, char const *argv[])
     SetConsoleMode(hStdin, mode & (~ENABLE_ECHO_INPUT));
 
     string key;
-    ifstream inputFile;
-    ofstream outputFile;
     vector<unsigned char> input;
     vector<unsigned char> output;
     
-    inputFile.open(argv[1]);
-    outputFile.open(argv[2]);
+    ifstream inputFile(argv[1], ios::in | ios::binary);
+    ofstream outputFile(argv[2], ios::out | ios::binary);
+
     cout << "Please enter your session key:" << endl;
     getline(cin, key);
 
@@ -39,4 +50,10 @@ int main(int argc, char const *argv[])
     inputFile.close();
     outputFile.close();
     return 0;
+}
+
+bool fexists(const char* filename)
+{
+    ifstream ifile(filename);
+    return ifile;
 }

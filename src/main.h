@@ -5,3 +5,5 @@
 #include <windows.h>
 #include "encryptor.h"
 using namespace std;
+
+bool fexists(const char* filename);
