@@ -19,6 +19,10 @@ int main(int argc, char const *argv[])
         return 0;
     }
 
+    /*
+        Text hiding method by guestgulkan on cplusplus forum
+    */
+
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE); 
     DWORD mode = 0;
     GetConsoleMode(hStdin, &mode);
@@ -52,6 +56,9 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
+/*
+    Credit to ropez on cplusplus forum
+*/
 bool fexists(const char* filename)
 {
     ifstream ifile(filename);
