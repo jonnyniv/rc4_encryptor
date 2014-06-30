@@ -2,10 +2,10 @@
 #include <string>
 #include <vector>
 using namespace std;
-class encryptor
+class Encryptor
 {
 public:
-    encryptor(string& k, vector<unsigned char>& in);
+    Encryptor(string& k, vector<unsigned char>& in);
     vector<unsigned char> crypt();
 
     

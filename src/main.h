@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 #include <windows.h>
-#include "encryptor.h"
+#include "Encryptor.h"
 using namespace std;
 
 bool fexists(const char* filename);

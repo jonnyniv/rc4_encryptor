@@ -32,6 +32,3 @@ $(ObjectDir)/%.o: $(SourceDir)/%.cpp
 
 $(BinDir):
 	mkdir -p $(BinDir)
-
-clean:
-	rm -rf $(ObjectDir)/*.o $(CExecutable)

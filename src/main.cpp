@@ -4,24 +4,22 @@
 */
 
 #include "main.h"
-
 int main(int argc, char const *argv[])
 {
-
     if(argc < 3)
     {
-        cout << "Usage: encryptor <Input file name> <Output file name>" << endl;
+        cout << "Usage: encryptor InputFileName OutputFileName" << endl << "Terminating..." << endl;
         return 0;
     }
     else if(!fexists(argv[1]))
     {
-        cout << "Input file does not exist!" << endl;
+        cout << "Input file does not exist!" << endl << "Terminating..." << endl;
         return 0;
     }
 
-    /*
-        Text hiding method by guestgulkan on cplusplus forum
-    */
+    
+    //Text hiding method by guestgulkan on cplusplus forum
+    
 
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE); 
     DWORD mode = 0;
@@ -42,8 +40,10 @@ int main(int argc, char const *argv[])
     {
         input.push_back(inputFile.get());
     }
-    encryptor enc(key, input);
 
+    inputFile.close();
+
+    Encryptor enc(key, input);
     output = enc.crypt();
 
     for(int i = 0; i < (int) output.size(); i++)
@@ -51,14 +51,12 @@ int main(int argc, char const *argv[])
         outputFile.put(output[i]);
     }
 
-    inputFile.close();
+    
     outputFile.close();
     return 0;
 }
 
-/*
-    Credit to ropez on cplusplus forum
-*/
+//Credit to ropez on cplusplus forum
 bool fexists(const char* filename)
 {
     ifstream ifile(filename);
