@@ -1,5 +1,6 @@
 #Edit this to select source files
-Sources=main.cpp encryptor.cpp
+Sources=main.cpp FileHandler.cpp Encryptor.cpp		
+#main.cpp Encryptor.cpp FileHandler.cpp
 #This determines the executable name
 Executable=encryptor.exe
 #Change these to change compiler settings

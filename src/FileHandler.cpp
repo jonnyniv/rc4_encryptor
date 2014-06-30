@@ -50,16 +50,12 @@ string* FileHandler::get()
 
     if(readOnly)
     {   
-        fileStream->seekg(0, fileStream->end);
-        fSize = fileStream->tellg();
-        fileStream->seekg(0, fileStream->beg);
-        cerr << "File size: " << fSize << endl;
-        char* buffer = new char[fSize];
-        fileStream->read(buffer, fSize);
-        cerr << "File buffer: " << buffer << endl;
-
-        fileString = new string(buffer);
-        delete[] buffer;
+        fileString = new string;
+        while(!fileStream->eof())
+        {
+            fileString->push_back(fileStream->get());
+        }
+        
         return fileString;
     }
     else

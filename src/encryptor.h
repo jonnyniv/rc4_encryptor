@@ -5,15 +5,14 @@ using namespace std;
 class Encryptor
 {
 public:
-    Encryptor(string& k, vector<unsigned char>& in);
-    vector<unsigned char> crypt();
+    Encryptor(string& k, string& in);
+    string crypt();
 
-    
 private:
     array<unsigned char, 256> state;
     string key;
     void ksa();
-    vector<unsigned char> input;
-    vector<unsigned char> output;
-    vector<unsigned char> prga(const int& length);
+    string input;
+    string output;
+    string prga(const int& length);
 };

@@ -4,6 +4,5 @@
 #include <string>
 #include <windows.h>
 #include "Encryptor.h"
+#include "FileHandler.h"
 using namespace std;
-
-bool fexists(const char* filename);

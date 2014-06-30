@@ -1,6 +1,6 @@
 #include "Encryptor.h"
 
-Encryptor::Encryptor(string& k, vector<unsigned char>& in)
+Encryptor::Encryptor(string& k, string& in)
 {
     key = k;
     input = in;
@@ -22,9 +22,9 @@ void Encryptor::ksa()
     }
 }
 
-vector<unsigned char> Encryptor::prga(const int& length)
+string Encryptor::prga(const int& length)
 {
-    vector<unsigned char> output;
+    string output;
     int  i = 0, j = 0, temp;
     for(int x = 0; x < length; x++)
     {
@@ -38,13 +38,13 @@ vector<unsigned char> Encryptor::prga(const int& length)
     return output;
 }
 
-vector<unsigned char> Encryptor::crypt()
+string Encryptor::crypt()
 {
     int length = (int) input.size()-1;
 
     prga(1024);
     ksa();
-    vector<unsigned char> encStream = prga(length);
+    string encStream = prga(length);
     for(int i = 0; i < length; i++)
     {
         output.push_back(input[i] ^ encStream[i]);
